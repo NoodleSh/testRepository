@@ -6,7 +6,7 @@ public class Aplication01 {
         short snum = 2;
 
         int inum = 3;
-        long num = 4;
+        long num = 4L;
 
         float fnum = 5.0f;
         double dnum = 6.3;
