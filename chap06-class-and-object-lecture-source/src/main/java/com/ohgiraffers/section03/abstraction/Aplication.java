@@ -6,7 +6,7 @@ public class Aplication {
     public static void main(String[] args) {
         /*
         * 추상화란?
-        * 공통된 부분을 추출하고 공통괴지 않은 부분을 제거한다는 의미, 추상화의 목적은 유연성을 확보하기 위함이다.
+        * 공통된 부분을 추출하고 공통되지 않은 부분을 제거한다는 의미, 추상화의 목적은 유연성을 확보하기 위함이다.
         * 유연성 확보는 여러 곳에 적용될 수 있는 유연한 객체를 의미하며, 즉 재사용성이 높아질 수 있게 한다.
         * 객체의 재사용성이 증가하면 중복 작성되는 코드를 줄일 수 있으며, 오류 발생 가능성을 감소시키고 유지보수성을 증가시킨다.
         * */
@@ -55,6 +55,7 @@ public class Aplication {
 
         Scanner sc = new Scanner(System.in);
 
+        label:
         while(true){
             System.out.println("======카레이싱 프로그램======");
             System.out.println("1. 시동 걸기");
@@ -84,15 +85,15 @@ public class Aplication {
 
                     case 9:
                         System.out.println("프로그램을 종료합니다.");
-                        break;
+                        break label;
 
                     default:
                         System.out.println("없는 메뉴입니다");
                         break;
                 }
-                if(no == 9){
-                    break;
-                }
+//                if(no == 9){
+//                    break;
+//                }
         }
 
     }
