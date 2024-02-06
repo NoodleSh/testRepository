@@ -170,14 +170,24 @@ public class Test2 {
         char[]ch = new char[str.length()];
 
 
-        for(int i = 0; i < ch.length; i++){
-            if(i<ch.length){
+        for(int i=0; i<str.length(); i++){
+            ch[i]+=str.charAt(i);
+        }
 
+        char[]ch2 = new char[ch.length];
+
+        for(int i = 0; i < ch.length; i++){
+            if(i<8){
+                ch2[i]+=ch[i];
             }else{
-                str += strStar;
+                ch2[i]+= '*';
             }
         }
-        System.out.println(str);
+
+        for(int i=0; i<ch.length; i++){
+            System.out.print(ch2[i]);
+        }
+
 
         /*
          * [ 로또번호 생성기 ]
