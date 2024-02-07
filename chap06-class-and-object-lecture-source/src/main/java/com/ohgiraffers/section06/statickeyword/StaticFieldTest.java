@@ -15,6 +15,7 @@ public class StaticFieldTest {
         * static 필드에 접근하기 위해서는 클래스명.필드명으로 접근한다
         * this. 으로도 접근은 가능하지만 this. 을 사용하지 않는것이 좋다.
         * */
+
         return StaticFieldTest.staticCount;
     }
 
