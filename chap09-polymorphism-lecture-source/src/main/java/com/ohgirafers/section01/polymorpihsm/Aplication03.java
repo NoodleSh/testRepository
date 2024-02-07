@@ -7,7 +7,7 @@ public class Aplication03 {
         Animal animal1 = new Cat();
         Animal animal2 = new Tiger();
 
-        app3.feed(animal1); //동일한 타입이기 때문에 가능함
+        app3.feed(animal1); //동일한 타입이기 때문에 가능함(Animal 타입)
         app3.feed(animal2);
 
         Cat animal3 = new Cat();

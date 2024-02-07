@@ -1,7 +1,7 @@
 package com.ohgiraffers.section01.extend;
 
 public class Car {
-    private boolean runningStatus;
+    private boolean runningStatus; // 초기값은 false
     
     public Car(){
         System.out.println("Car 클래스의 기본 생성자 호출됨");
