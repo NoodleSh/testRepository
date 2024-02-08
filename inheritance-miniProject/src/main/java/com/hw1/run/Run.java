@@ -24,7 +24,7 @@ public class Run {
 //            System.out.println("학생정보: "+ studentArray[i].getInformation());
 //        }//for-each로 수정할것
 
-        for(Person student : studentArray){
+        for(Student student : studentArray){
             System.out.println("학생정보: "+ student.getInformation());
         }
 
@@ -98,6 +98,7 @@ public class Run {
             System.out.println(emp.getInformation());
         }*/ // for-each(employeeArray로 조회할 경우)
 
+
         /*for(Employee emp : count){
             System.out.println(emp.getInformation());
         }*/ // for-each(count로 조회할 경우)
@@ -120,4 +121,4 @@ public class Run {
         } // 일반 for문(count로 조회할 경우)
 
     }
-}
+
