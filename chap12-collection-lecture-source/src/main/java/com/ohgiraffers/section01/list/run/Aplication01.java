@@ -5,7 +5,7 @@ import java.util.*;
 public class Aplication01 {
     public static void main(String[] args) {
         /* [ 컬렉션 프레임 워크(Collectionn Framework)]
-        * 여러갸ㅐ의 다양한 데이터들을 쉽고 효과적으로 처리할 수 있도록
+        * 여러개의 다양한 데이터들을 쉽고 효과적으로 처리할 수 있도록
         * 표준화된 방법을 제공하는 클래스들의 집합을 의미한다.
         * 즉, 데이터를 효율적으로 저장하는 자료구조와 데이터를 처리하는 알고리즘을 미리 구현해놓은 클래스를 말한다.
         *
@@ -49,7 +49,7 @@ public class Aplication01 {
 
         List list = new ArrayList(); //List 타입으로 지정해줄 경우, 유연한 코드 작성이 가능하다.
 
-        Collection clist = new ArrayList(); // List보다 상위 타입인 Collection
+        Collection clist = new ArrayList(); // List보다 상위 타입인 Collection으로도 타입 지정이 가능하다.
 
         alist.add("apple");
         alist.add(123);
