@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class LibraryMenu {
 
     private LibraryManager lm = new LibraryManager();
+
     Scanner sc = new Scanner(System.in);
 
     public void mainMenu(){
@@ -22,7 +23,16 @@ public class LibraryMenu {
         System.out.print("성별 입력: ");
         char gender = sc.nextLine().charAt(0);
 
-        this.lm.insertMenu(); // 일단 보류
+        Member mem  = new Member();
+//        this.lm.insertMenu(); // 일단 보류
+//        mem.setName(name);
+//        mem.setAge(age);
+//        mem.setGender(gender);
+
+        lm.insertMember(new Member(mem.getName(), mem.getAge(), mem.getGender()));
+
+
+
         int menuCount;
 
         while (true){
@@ -31,7 +41,7 @@ public class LibraryMenu {
             switch (menuCount){
                 case 1:
                     System.out.println("마이페이지");
-                    this.lm.myInfo();
+                    lm.myInfo();
                     break;
 
                 case 2:
@@ -75,7 +85,8 @@ public class LibraryMenu {
     public void searchBook(){
         System.out.println("검색할 제목 키워드: ");
         String keyword = sc.nextLine();
-        Book[] searchList = new Book[] {lm.searchBook(keyword)};
+        Book[] searchList = new Book[5];
+
 
         for(Book searchBookList : searchList){
             System.out.println(searchBookList);
@@ -87,7 +98,7 @@ public class LibraryMenu {
 
         System.out.println("대여할 도서 번호 선택: ");
         int bookNum = sc.nextInt();
-        this.lm.rentBook(bookNum);
+        lm.rentBook(bookNum);
 
     }
 }
