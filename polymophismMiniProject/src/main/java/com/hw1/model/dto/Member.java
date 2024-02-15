@@ -9,6 +9,9 @@ public class Member {
     public Member(){
 
     }
+    public Member(int couponCount){
+        this.couponCount = couponCount;
+    }
     public Member(String name, int age, char gender) {
         this.name = name;
         this.age = age;

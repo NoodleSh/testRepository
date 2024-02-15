@@ -21,7 +21,7 @@ public class LibraryMenu {
         int age = sc.nextInt();
 
         System.out.print("성별 입력: ");
-        char gender = sc.nextLine().charAt(0);
+        char gender = sc.next().charAt(0);
 
         Member mem  = new Member();
 //        this.lm.insertMenu(); // 일단 보류
@@ -96,9 +96,24 @@ public class LibraryMenu {
     public void rentBook(){
         selectAll();
 
+        System.out.println();
         System.out.println("대여할 도서 번호 선택: ");
         int bookNum = sc.nextInt();
         lm.rentBook(bookNum);
+
+        // 0일 경우  “성공적으로 대여되었습니다.” 출력
+// 1일 경우  “나이 제한으로 대여 불가능입니다.” 출력
+// 2일 경우  “성공적으로 대여되었습니다. 요리학원 쿠폰이 발급되었습니다. 마이페이지를 통해 확인하세요” 출력
+
+
+        // ???수정해야할듯
+        if(lm.rentBook(bookNum) == 0){
+            System.out.println("성공적으로 대여되었습니다.");
+        } else if (lm.rentBook(bookNum) == 1) {
+            System.out.println("나이 제한으로 대여 불가능입니다.");
+        }else if(lm.rentBook(bookNum) == 2){
+            System.out.println("성공적으로 대여되었습니다. 요리학원 쿠폰이 발급 되었습니다. 마이페이지를 통해 확인하세요");
+        }
 
     }
 }
