@@ -60,4 +60,6 @@ public class Member {
                 ", couponCount=" + couponCount +
                 '}';
     }
+
+
 }

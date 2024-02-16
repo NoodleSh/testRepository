@@ -1,5 +1,6 @@
 package com.test;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Person {
@@ -76,20 +77,38 @@ public class Person {
 
     public void teachDog(String[] ability) {
         /* 내 강아지의 재주를 설정*/
-//        String[] dogAbility = new String[3];
-//        for(int i = 0; i < ability.length; i++){
-//                dogAbility[i]+=ability[i];
-//            }
-//       //this.myDog = new Dog(dogAbility);
-////        myDog.learnAbility(dogAbility);
-//        myDog.setAbility(dogAbility);
-
-//           this.myDog.setAbility(ability);
-
-//        Dog dog = new Dog();
-
         this.myDog.learnAbility(ability);
         }
+
+     public void orderDog() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("재주 입력:");
+        String play = sc.nextLine();
+
+//        this.myDog.playAbility(play);
+         
+        /* 1. void 메소드 출력
+        *  2. String으로 변경하여 출력
+        *       출력예시) 뽀삐는 앉아!를 할 수 있어요 :) or 뽀삐는 짖어!를 배우지 않았어요
+        *
+        * 3 . boolean으로 변경하여 출력
+        *       출력예시) 뽀삐는 앉아!를 배웠어요 or 뽀삐는 짖어!를 할 수 없어요*/
+
+
+         /* void 타입으로 반환 받음 */
+         this.myDog.playVoidAbility(play);
+
+         /* String 타입으로 반환 받은 출력문 */
+         System.out.println(this.myDog.playStringAbility(play));
+
+         /* boolean 타입으로 반환 받은 출력문 */
+         if(myDog.playBoolAbility(play) == true){
+             System.out.println(myDog.getName() + "는 " + play + "를 배웠어요 :) " );
+         }else{
+             System.out.println(myDog.getName() + "는 " + play+ "를 배우지 않았어요 :( " );
+         }
+     }
 
 
 
@@ -107,6 +126,7 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", nationality='" + nationality + '\'' +
+                Arrays.toString(this.myDog.getAbility())+
                 '}';
     }
 

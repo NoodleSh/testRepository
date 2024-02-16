@@ -1,5 +1,8 @@
 package com.hw1.model.dto;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Book {
 
     private String title;
@@ -44,7 +47,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "title='" + title + '\'' +
+                "title='" + title.toString() + '\'' +
                 ", author='" + author + '\'' +
                 ", publisher='" + publisher + '\'';
     }
