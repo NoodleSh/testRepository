@@ -1,6 +1,7 @@
 package com.hw1.view;
 
 
+import com.hw1.model.controller.LibraryManager;
 import com.hw1.model.dto.Book;
 import com.hw1.model.dto.Member;
 
@@ -38,6 +39,15 @@ public class LibraryMenu {
         int menuCount;
 
         while (true){
+
+            System.out.println();
+            System.out.println("1. 마이페이지");
+            System.out.println("2. 도서 전체 조회");
+            System.out.println("3. 도서 검색");
+            System.out.println("4. 도서 대여");
+            System.out.println("0. 프로그램 종료");
+            System.out.println();
+
             System.out.print("메뉴 선택: ");
             menuCount = sc.nextInt();
             switch (menuCount){
@@ -63,20 +73,22 @@ public class LibraryMenu {
 
                 case 0:
                     System.out.println("프로그램 종료");
-                    break;
+                    //break;
+                    return; //바로 프로그램 종료
                 
                 default:
                     System.out.println("다시 선택해주세요");
                     break;
             }
-            if(menuCount == 0){
-                break;
-            }
+//            if(menuCount == 0){
+//                break;
+//            }
         }
-
-        
     }
+
+
     public void selectAll(){
+
         Book[] bList = lm.selectAll();
 
         for(int i = 0; i < bList.length; i++){
@@ -86,13 +98,21 @@ public class LibraryMenu {
 
     }
 
-    public void searchBook(){
+    public void searchBook(){ // 입력부분 수정 필요..
         System.out.print("검색할 제목 키워드: ");
         String keyword = sc.nextLine();
-        System.out.println(lm.searchBook(keyword).toString());
+        Book[]searchList = lm.searchBook(keyword);
+        System.out.println();
+
+        for(Book bk :searchList ){
+                if(bk != null){
+                    System.out.println(bk);
+                }
+            }
+        }
 
 
-    }
+
 
 
     @Override

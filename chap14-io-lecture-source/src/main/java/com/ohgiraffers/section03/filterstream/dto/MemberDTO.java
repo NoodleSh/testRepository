@@ -1,6 +1,6 @@
 package com.ohgiraffers.section03.filterstream.dto;
 
-public class MemberDTO extends java.io.Serializable {
+public class MemberDTO implements java.io.Serializable {
 
     private String id;
     private String pwd;
