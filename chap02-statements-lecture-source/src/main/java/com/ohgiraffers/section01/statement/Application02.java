@@ -25,7 +25,7 @@ public class Application02 {
                 /* 4. Connection의 createStatement()를 이용한 Statement 인스턴스 생성 */
                 stmt = con.createStatement();
                 Scanner sc =  new Scanner(System.in);
-                System.out.println("4번을 입력하세요 : ");
+                System.out.println("사번을 입력하세요 : ");
                 String empId = sc.nextLine();
 
                 /* empId는 varchar형이기 때문에 싱글쿼테이션 사용*/
