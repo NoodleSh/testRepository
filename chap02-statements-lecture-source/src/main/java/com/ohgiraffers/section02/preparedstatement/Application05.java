@@ -2,15 +2,19 @@ package com.ohgiraffers.section02.preparedstatement;
 
 import com.ohgiraffers.model.dto.EmployeeDTO;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
 
 import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
-public class Application04 {
+public class Application05 {
     public static void main(String[] args) {
         /* 조회할 사원의 성씨를 입력 받아서 해당 성씨를 가진 사원 정보들을 모두 출력 */
 
@@ -26,9 +30,16 @@ public class Application04 {
         System.out.println("조회할 이름의 성을 입력하세요 : ");
         String empName  = sc.nextLine();
 
-        String query = "SELECT * FROM EMPLOYEE WHERE EMP_NAME LIKE CONCAT(?, '%')";
+        Properties prop = new Properties();
+
+
+
+        //String query = "SELECT * FROM EMPLOYEE WHERE EMP_NAME LIKE CONCAT(?, '%')";
 
         try {
+            prop.loadFromXML(
+                    new FileInputStream("src/main/java/com/ohgiraffers/section02/preparedstatement/employee-query.xml"));
+            String query = prop.getProperty("selectEmpByeFamilyName");
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, empName);
 
@@ -65,7 +76,13 @@ public class Application04 {
         } catch (SQLException e) {
             e.printStackTrace();
 
-        }finally {
+        } catch (InvalidPropertiesFormatException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             close(rset);
             close(pstmt);
             close(con);
