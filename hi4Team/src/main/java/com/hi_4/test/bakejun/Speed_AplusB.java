@@ -15,22 +15,23 @@ public class Speed_AplusB {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 
-            int num = Integer.parseInt(br.readLine()); //입력한 문자를 숫자로 바꿈 ,공백을 포함해서 읽음
+            int num = Integer.parseInt(br.readLine()); // 횟수 입력
 
             StringTokenizer str; //문자열을 토큰화 시키기 위해 선언
 
             System.out.println("반복할 횟수: " + num);
 
+
             for(int i = 0; i <num; i++) {
-                str = new StringTokenizer(br.readLine()," "); //num을 입력받음
+                str = new StringTokenizer(br.readLine()," "); 
                 bw.write((Integer.parseInt(str.nextToken()) + Integer.parseInt(str.nextToken())) + "\n");
                 //문자열
             }
 
             br.close();
+
             bw.flush();
             bw.close();
-
 
     }
 }

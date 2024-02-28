@@ -22,7 +22,7 @@ public class Exchange {
         double randExchange; // 랜덤환율
         int exchangeValue;// 환전 종류
         double exchangeMoney; //환전 금액
-        double exchangeReturn; //총 계산 금액
+        int exchangeReturn; //총 계산 금액
 
 
 
@@ -31,6 +31,7 @@ public class Exchange {
             System.out.print("1.예 2.아니오 : ");
 
             eventChk = sc.nextInt();
+
 
             /* 이벤트 참여 O*/
             try {
@@ -56,13 +57,14 @@ public class Exchange {
                             }
 
                             if(exchangeMoney > money[0].getLimit()) {
+
                                 exchangeMoney = money[0].getLimit();
                                 System.out.println("미국 달러의 일일한도는 "+ exchangeMoney +"만원 입니다.");
                                 System.out.println("최대 금액으로 자동 입력 되었습니다.");
 //										 (환전 종류 선택 > 환전금액 입력: 최소 5만원에서 최대 일일한도 금액까지 > 환전계산)
 //										 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
-                                exchangeReturn =  (exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[0].getNotified()) * (1-(money[0].getRate()+randExchange))));
+                                exchangeReturn = (int) (exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[0].getNotified()) * (1-(money[0].getRate()+randExchange)*0.01)));
 
                                 System.out.println(exchangeMoney + "만원을 " + ((money[0].getRate()+randExchange)) + "% 우대 받아 " + exchangeReturn + " 미국달러로 환전하였습니다.");
                                 break;
@@ -70,7 +72,7 @@ public class Exchange {
                             }
 
 //									환전금액이 한도보다 높지 않을때
-                            exchangeReturn = (exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[2].getNotified()) * (1-(money[0].getRate()+randExchange))));
+                            exchangeReturn = (int)(exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[2].getNotified()) * (1-(money[0].getRate()+randExchange))));
 
                             System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate()+randExchange)) + "% 우대 받아 " + exchangeReturn + " 미국달러로 환전하였습니다.");
                             break;
@@ -93,7 +95,7 @@ public class Exchange {
 //										 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
 //                                exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
-                                exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
+                                exchangeReturn = (int)(exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
 
                                 System.out.println(exchangeMoney + "만원을 " + ((money[1].getRate()+randExchange)) + "% 우대 받아 " + exchangeReturn + " 유로로 환전하였습니다.");
                                 break;
@@ -101,7 +103,7 @@ public class Exchange {
 
 //									환전금액이 한도보다 높지 않을때
 //                            exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[2].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
-                            exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[2].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
+                            exchangeReturn = (int)(exchangeMoney/(money[1].getNotified() + (money[2].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()+randExchange))));
                             System.out.println(exchangeMoney + "만원을 " + ((money[1].getRate()+randExchange)) + "% 우대 받아 " + exchangeReturn + " 유로로 환전하였습니다.");
                             break;
 
@@ -122,13 +124,14 @@ public class Exchange {
 //										 (환전 종류 선택 > 환전금액 입력: 최소 5만원에서 최대 일일한도 금액까지 > 환전계산)
 //										 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
-                                exchangeReturn =  (exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()+randExchange))));
+                                // V
+                                exchangeReturn = (int) (money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()+randExchange)));
 
                                 System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate()+randExchange)) + "% 우대 받아" + exchangeReturn + "호주달러로 환전하였습니다.");
                                 break;
                             }
 //									환전금액이 한도보다 높지 않을때
-                            exchangeReturn = (exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()+randExchange))));
+                            exchangeReturn = (int)(exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()+randExchange))));
                             System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate()+randExchange)) + "% 우대 받아 " + exchangeReturn + " 호주달러로 환전하였습니다.");
                             break;
 
@@ -180,14 +183,14 @@ public class Exchange {
 //							 (환전 종류 선택 > 환전금액 입력: 최소 5만원에서 최대 일일한도 금액까지 > 환전계산)
 //							 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
-                        exchangeReturn = (exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[0].getNotified()) * (1-(money[0].getRate()))));
+                        exchangeReturn =(int)(exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[0].getNotified()) * (1-(money[0].getRate()))));
 
                         System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate())) + "% 우대 받아 " + exchangeReturn + " 미국달러로 환전하였습니다.");
                         break;
                     }
 
                     //						환전금액이 한도보다 높지 않을때
-                    exchangeReturn = (exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[2].getNotified()) * (1-(money[0].getRate()))));
+                    exchangeReturn = (int)(exchangeMoney/(money[0].getNotified() + (money[0].getBuy() - money[2].getNotified()) * (1-(money[0].getRate()))));
 
                     System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate())) + "% 우대 받아 " + exchangeReturn + " 미국달러로 환전하였습니다.");
                     break;
@@ -208,13 +211,13 @@ public class Exchange {
 //							 (환전 종류 선택 > 환전금액 입력: 최소 5만원에서 최대 일일한도 금액까지 > 환전계산)
 //							 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
-                        exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()))));
+                        exchangeReturn =(int)(exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()))));
 
                         System.out.println(exchangeMoney + "만원을 " + ((money[1].getRate())) + "% 우대 받아 " + exchangeReturn + " 유로로 환전하였습니다.");
                         break;
                     }
                     //						환전금액이 한도보다 높지 않을때
-                    exchangeReturn = (exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()))));
+                    exchangeReturn = (int)(exchangeMoney/(money[1].getNotified() + (money[1].getBuy() - money[1].getNotified()) * (1-(money[1].getRate()))));
 
                     System.out.println(exchangeMoney + "만원을 " + ((money[1].getRate())) + "% 우대 받아 " + exchangeReturn + " 유로로 환전하였습니다.");
                     break;
@@ -235,14 +238,14 @@ public class Exchange {
 //							 (환전 종류 선택 > 환전금액 입력: 최소 5만원에서 최대 일일한도 금액까지 > 환전계산)
 //							 환전 계산 방법 : 환전금액/(고시환율 + (살때환율 - 고시환율)*(1 - 우대이율)) // (최종 환전 금액은 소수점 절삭)
 //
-                        exchangeReturn =  (exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()))));
+                        exchangeReturn =  (int)(exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[2].getNotified()) * (1-(money[2].getRate()))));
 
                         System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate())) + "% 우대 받아 " +(int) exchangeReturn + " 호주달러로 환전하였습니다.");
                         break;
                     }
 
                     //						환전금액이 한도보다 높지 않을때
-                    exchangeReturn = (exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[1].getNotified()) * (1-(money[2].getRate()))));
+                     exchangeReturn = (int)(exchangeMoney/(money[2].getNotified() + (money[2].getBuy() - money[1].getNotified()) * (1-(money[2].getRate()))));
 
                     System.out.println(exchangeMoney + "만원을 " + ((money[2].getRate())) + "% 우대 받아 " +(int) exchangeReturn + " 호주 달러로 환전하였습니다.");
                     break;
