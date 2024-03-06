@@ -1,6 +1,6 @@
 package com.ohgiraffers.section01.xmlconfig;
 
-public class MenuDTO implements java.io.Serializable{
+public class MenuDTO implements java.io.Serializable {
 
     private int code;
     private String name;
@@ -8,9 +8,7 @@ public class MenuDTO implements java.io.Serializable{
     private int categoryCode;
     private String orderableStatus;
 
-    public MenuDTO() {
-
-    }
+    public MenuDTO() {}
 
     public MenuDTO(int code, String name, int price, int categoryCode, String orderableStatus) {
         this.code = code;

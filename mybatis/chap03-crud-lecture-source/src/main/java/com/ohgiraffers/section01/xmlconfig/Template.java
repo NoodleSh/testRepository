@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Template {
+
     private static SqlSessionFactory sqlSessionFactory;
 
     public static SqlSession getSqlSession() {
+
         if(sqlSessionFactory == null) {
             String resource = "com/ohgiraffers/section01/xmlconfig/mybatis-config.xml";
             try {
@@ -24,4 +26,5 @@ public class Template {
         }
         return sqlSessionFactory.openSession(false);
     }
+
 }
