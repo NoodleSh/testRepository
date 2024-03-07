@@ -14,9 +14,10 @@ public class StockMenu {
         while (true){
             System.out.println("1. 내정보 입력");
             System.out.println("2. 내정보 확인");
-            System.out.println("3. 전체 주식 조회");
-            System.out.println("4 .주식 구매");
-            System.out.println("5. 주식 판매");
+            System.out.println("3. 내정보 확인");
+            System.out.println("4. 전체 주식 조회");
+            System.out.println("5 .주식 구매");
+            System.out.println("6. 주식 판매");
             
             menu = sc.nextInt();
             switch (menu) {

@@ -101,6 +101,9 @@ public class StockManager {
         }
     }
 
+    public void deleteStock() {}
+
+
 
 
 
