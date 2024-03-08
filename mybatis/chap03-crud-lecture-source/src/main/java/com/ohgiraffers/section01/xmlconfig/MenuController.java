@@ -21,10 +21,12 @@ public class MenuController {
     }
 
     public void selectAllMenu() {
+
         /*
         * 데이타 베이스 한 행에 담겨져 있는 정보를 dto에 매핑해서 여러건의 메뉴를
         * 조회하는 것이기 때문에 리스트의 메뉴 디티오 타입으로 조회.
         * */
+
         List<MenuDTO> menuList = menuService.selectAllMenu();
 
         if(menuList != null) {

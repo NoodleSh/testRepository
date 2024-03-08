@@ -33,11 +33,14 @@ public class Application {
         /* 설정 객체에 매퍼 등록 (어디에 쿼리를 작성했다를 등록 매퍼에 대한 메타정보 전달) */
         configuration.addMapper(Mapper.class);
 
+
         /* SqlSessionFactory : SqlSession 객체를 생성하기 위한 팩토리 역할의 인터페이스
         * SqlSessionFactoryBuilder : SqlsessionFactory 인터페이스 타입의 하위 구현 객체를 생성하기 위한 빌드 역할
         * build() : 설정에 대한 정보를 담고 있는 Configuration 타입의 객체 혹은 외부 설정파일과 연결된
         *           Stream을 매개변수로 전달하면 SqlSessionFactory 인터페이스 타입의 객체를 반환하는 메소드
         * */
+
+
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 
         /* openSession() : SqlSession 인터페이스 타입의 객체를 반환하는 메소드로 boolean 타입을 인자로 전달 */
