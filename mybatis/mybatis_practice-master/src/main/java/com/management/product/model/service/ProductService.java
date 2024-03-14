@@ -18,6 +18,9 @@ public class ProductService {
     // 1. 자주 사용할 DAO 객체를 선언하세요.
 
     private ProductMapper productMapper;
+    private ProductDAO productDAO;
+
+
 
     public List<ProductDTO> selectAllProductList() {
         // 2. 전체 제품 목록을 조회하는 로직을 작성하세요.
@@ -33,35 +36,71 @@ public class ProductService {
     }
 
     public List<ProductDTO> selectProductByCondition(SearchCondition searchCondition) {
-        SqlSession sqlSession = getSqlSession();
 
         // 3. 조건에 따른 제품 목록을 조회하는 로직을 작성하세요.
         // 　　아래 작성된 return null은 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return null;
+        SqlSession sqlSession = getSqlSession();
+        List<ProductDTO> productMenu = productDAO.selectProductByCondition(sqlSession,searchCondition);
+
+        sqlSession.close();
+
+        return productMenu;
 
     }
 
     public boolean registNewProduct(ProductDTO product) {
-
         // 4. 제품 정보를 등록하는 로직을 작성하세요.
         // 　　아래 작성된 return false 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return false;
+        SqlSession sqlSession = getSqlSession();
+
+        int result = ProductDAO.insertProduct(sqlSession, product) // ??
+
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        return result > 0? true : false;
 
     }
 
     public boolean modifyProductInfo(ProductDTO product) {
-
         // 5. 제품 정보를 수정하는 로직을 작성하세요.
         // 　　아래 작성된 return false 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return false;
 
+        SqlSession sqlSession = getSqlSession();
+
+        int result = productDAO.updateProduct(sqlSession,product);
+
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0? true : false;
     }
 
-    public boolean deleteProduct(Map<String, String> parameter) {
 
+    public boolean deleteProduct(Map<String, String> parameter) {
         // 6. 제품 정보를 삭제하는 로직을 작성하세요.
         // 　　아래 작성된 return false 과제 툴 오류를 제거하고자 임의 작성하였으니 지우고 로직을 작성하세요.
-        return false;
+        SqlSession sqlSession = getSqlSession();
+
+        int result =  productDAO.deleteProduct(sqlSession, parameter);
+
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0? true : false;
 
     }
 }

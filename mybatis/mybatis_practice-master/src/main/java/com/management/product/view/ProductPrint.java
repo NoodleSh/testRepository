@@ -26,14 +26,23 @@ public class ProductPrint {
         // 2. 조건에 따라 조회한 목록을 출력하는 메소드
         //    (조건 1) SearchCondition 객체로 검색 조건이 무엇인지 출력하세요.
         //    (조건 2) List<ProductDTO>로 받아온 데이터 목록을 전체 출력하세요.
+        //    (일단 보류)
+        sear
 
     }
 
     public void printSuccessMessage(String successCode) {
-
         // 3. 성공메시지를 출력하는 메소드
         //    (조건) 성공코드를 전달받아 성공을 알리는 메시지를 출력하세요.
 
+        String successMassage = "";
+        switch (successCode) {
+            case "insert" : successMassage = "신규 메뉴 등록을 성공하였습니다."; break;
+            case "update" : successMassage = "메뉴 수정을 성공하였습니다."; break;
+            case "delete" : successMassage = "메뉴 삭제를 성공하였습니다."; break;
+        }
+
+        System.out.println(successMassage);
     }
 
     public void printErrorMessage(String errorCode) {
@@ -52,5 +61,6 @@ public class ProductPrint {
         System.out.println(errorMessage);
 
     }
+
 
 }

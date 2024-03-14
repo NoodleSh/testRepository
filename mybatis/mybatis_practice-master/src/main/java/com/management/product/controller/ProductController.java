@@ -44,6 +44,13 @@ public class ProductController {
         //    　　　　　Print 객체를 통해 조회 조건과 제품 목록을 출력하세요.
         //    (조건 3) 제품 목록이 없는 경우, Print 객체를 통해 조회 결과가 없다는 오류 메세지를 출력하세요.
 
+        ProductDTO product = productService.selectProductByCondition();
+
+        if(product != null){
+            productPrint.printProductList(product);
+        }else{
+            productPrint.printErrorMessage("selectOne");
+        }
     }
 
     public void registNewProduct(ProductDTO product) {
